@@ -1,0 +1,22 @@
+{% extends "home.html" %}
+{% block content %}
+    <h1>Category - {{category.category_name}}</h1>
+    <div style='margin:30px;'>
+    {% if articles %}
+    {% for i in articles %}
+        <div class="col-md-8 blog-main">
+        <div class="blog-post">
+          <h3 class=""> <a href="{% url "single article" i.slug %}">{{i.title}}</a> </h3>
+          <p class="blog-post-meta">{{i.updated_at}} by <a href="#">{{i.author}}</a></p>
+          <p>{{i.short_description|truncatewords:25}}</p>
+        </div>
+      </div> 
+    {% endfor %}
+    {% else %}
+      <p>No articles avaliable...</p>
+    {% endif %}
+      </div>
+{% endblock content %}
+
+127.0.0.1:8000/category/Sports/
+127.0.0.1:8000/category/National/
